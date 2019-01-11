@@ -20,14 +20,14 @@ public class Project {
 
     public static List<Project> getMainProjects() {
         List<Project> list = new ArrayList<>();
-        list.add(new Project("医疗服务", R.mipmap.ic_launcher));
-        list.add(new Project("汽车服务", R.mipmap.ic_launcher));
-        list.add(new Project("招待所", R.mipmap.ic_launcher));
-        list.add(new Project("维修服务", R.mipmap.ic_launcher));
-        list.add(new Project("停车卡申请", R.mipmap.ic_launcher));
-        list.add(new Project("物业服务", R.mipmap.ic_launcher));
-        list.add(new Project("餐饮服务", R.mipmap.ic_launcher));
-        list.add(new Project("综合服务", R.mipmap.ic_launcher));
+        list.add(new Project("医疗服务", R.mipmap.ic_main_1));
+        list.add(new Project("汽车服务", R.mipmap.ic_main_2));
+        list.add(new Project("招待所", R.mipmap.ic_main_3));
+        list.add(new Project("维修服务", R.mipmap.ic_main_4));
+        list.add(new Project("停车卡申请", R.mipmap.ic_main_5));
+        list.add(new Project("物业服务", R.mipmap.ic_main_6));
+        list.add(new Project("餐饮服务", R.mipmap.ic_main_7));
+        list.add(new Project("综合服务", R.mipmap.ic_main_8));
         return list;
     }
 

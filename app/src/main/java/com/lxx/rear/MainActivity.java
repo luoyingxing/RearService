@@ -39,6 +39,8 @@ public class MainActivity extends BaseActivity {
                 if (position == 0) {
                     Intent intent = new Intent(MainActivity.this, MedicalActivity.class);
                     startActivity(intent);
+                } else {
+                    showToast("该功能未推出，敬请期待！");
                 }
             }
         });
