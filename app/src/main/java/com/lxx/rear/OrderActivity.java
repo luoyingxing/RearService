@@ -46,9 +46,6 @@ public class OrderActivity extends BaseActivity {
         final CommonAdapter<Project> adapter = new CommonAdapter<Project>(this, new ArrayList<Project>(), R.layout.item_order) {
             @Override
             protected void convert(ViewHolder holder, Project item, int position) {
-                holder.setText(R.id.tv_item_order_title1, item.getTitle1());
-                holder.setText(R.id.tv_item_order_title2, item.getTitle2());
-
                 TextView titleTV = holder.getView(R.id.tv_item_order_title);
                 titleTV.setText(item.getTitle());
 
@@ -56,6 +53,8 @@ public class OrderActivity extends BaseActivity {
                     holder.getConvertView().setBackgroundResource(R.color.sample_blue);
                     titleTV.setTextColor(Color.WHITE);
                 } else {
+                    holder.setText(R.id.tv_item_order_title1, item.getTitle1());
+                    holder.setText(R.id.tv_item_order_title2, item.getTitle2());
                     holder.getConvertView().setBackgroundResource(R.color.gray_f9);
                     titleTV.setTextColor(getResources().getColor(R.color.gray_21));
                 }
