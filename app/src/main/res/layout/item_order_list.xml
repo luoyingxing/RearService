@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_order"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_order_list_item"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp">
+
+    <TextView
+        android:id="@+id/tv_item_order_list_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text=""
+        android:textColor="@color/gray_21"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_item_order_list_status"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_item_order_list_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text=""
+        android:textColor="@color/sample_red"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_item_order_list_title"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <View
+        android:id="@+id/view_item_order_list"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_de"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_item_order_list_room"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_order_list_title" />
+
+    <TextView
+        android:id="@+id/tv_item_order_list_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/tv_item_order_list_doctor"
+        app:layout_constraintTop_toBottomOf="@+id/view_item_order_list" />
+
+    <TextView
+        android:id="@+id/tv_item_order_list_doctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/tv_item_order_list_number"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_order_list_room" />
+
+    <TextView
+        android:id="@+id/tv_item_order_list_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/tv_item_order_list_time"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_order_list_doctor" />
+
+    <TextView
+        android:id="@+id/tv_item_order_list_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text=""
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_order_list_number" />
+
+</android.support.constraint.ConstraintLayout>
