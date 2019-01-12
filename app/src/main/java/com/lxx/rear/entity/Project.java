@@ -33,9 +33,9 @@ public class Project {
 
     public static List<Project> getMedicalProjects() {
         List<Project> list = new ArrayList<>();
-        list.add(new Project("挂号预约", R.mipmap.ic_launcher));
-        list.add(new Project("我的预约", R.mipmap.ic_launcher));
-        list.add(new Project("医疗保险", R.mipmap.ic_launcher));
+        list.add(new Project("挂号预约", R.mipmap.ic_medical_order));
+        list.add(new Project("我的预约", R.mipmap.ic_medical_mine));
+        list.add(new Project("医疗保险", R.mipmap.ic_medical_insurance));
         return list;
     }
 
