@@ -2,6 +2,7 @@ package com.lxx.rear.entity;
 
 import com.lxx.rear.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,13 +11,15 @@ import java.util.List;
  * <p/>
  * Created by luoyingxing on 2019/1/11.
  */
-public class Project {
+public class Project implements Serializable {
     private String title;
     private int icon;
 
     private String title1;
     private String title2;
     private boolean enable;
+    private String name;
+    private String introduce;
 
     public static List<Project> getMainProjects() {
         List<Project> list = new ArrayList<>();
@@ -41,27 +44,27 @@ public class Project {
 
     public static List<Project> getOrderProjects() {
         List<Project> list = new ArrayList<>();
-        list.add(new Project("", "周五", "01-11", false));
-        list.add(new Project("", "周六", "01-12", false));
-        list.add(new Project("", "周日", "01-13", false));
-        list.add(new Project("", "周一", "01-14", false));
-        list.add(new Project("", "周二", "01-15", false));
-        list.add(new Project("", "周三", "01-16", false));
-        list.add(new Project("", "周四", "01-17", false));
-        list.add(new Project("上午", "", "", false));
-        list.add(new Project("上午", "", "", true));
-        list.add(new Project("上午", "", "", true));
-        list.add(new Project("上午", "", "", true));
-        list.add(new Project("上午", "", "", false));
-        list.add(new Project("上午", "", "", false));
-        list.add(new Project("上午", "", "", false));
-        list.add(new Project("下午", "", "", false));
-        list.add(new Project("下午", "", "", true));
-        list.add(new Project("下午", "", "", true));
-        list.add(new Project("下午", "", "", true));
-        list.add(new Project("下午", "", "", false));
-        list.add(new Project("下午", "", "", false));
-        list.add(new Project("下午", "", "", false));
+        list.add(new Project("", "周五", "01-11", false, "", ""));
+        list.add(new Project("", "周六", "01-12", false, "", ""));
+        list.add(new Project("", "周日", "01-13", false, "", ""));
+        list.add(new Project("", "周一", "01-14", false, "", ""));
+        list.add(new Project("", "周二", "01-15", false, "", ""));
+        list.add(new Project("", "周三", "01-16", false, "", ""));
+        list.add(new Project("", "周四", "01-17", false, "", ""));
+        list.add(new Project("上午", "", "", false, "", ""));
+        list.add(new Project("上午", "", "", true, "房秀兰", "东南大学医学院本科毕业，主治医生，从事临床工作19年。"));
+        list.add(new Project("上午", "", "", true, "孔润萍", "衡阳医学院疗系毕业，副主任医师，从事临床工作44年。"));
+        list.add(new Project("上午", "", "", true, "李桂春", "第一军医大学毕业，住院医师，从事临床工作25年。"));
+        list.add(new Project("上午", "", "", false, "", ""));
+        list.add(new Project("上午", "", "", false, "", ""));
+        list.add(new Project("上午", "", "", false, "", ""));
+        list.add(new Project("下午", "", "", false, "", ""));
+        list.add(new Project("下午", "", "", true, "李桂春", "第一军医大学毕业，住院医师，从事临床工作25年。"));
+        list.add(new Project("下午", "", "", true, "房秀兰", "东南大学医学院本科毕业，主治医生，从事临床工作19年。"));
+        list.add(new Project("下午", "", "", true, "孔润萍", "衡阳医学院疗系毕业，副主任医师，从事临床工作44年。"));
+        list.add(new Project("下午", "", "", false, "", ""));
+        list.add(new Project("下午", "", "", false, "", ""));
+        list.add(new Project("下午", "", "", false, "", ""));
 
         return list;
     }
@@ -74,11 +77,13 @@ public class Project {
         this.icon = icon;
     }
 
-    public Project(String title, String title1, String title2, boolean enable) {
+    public Project(String title, String title1, String title2, boolean enable, String name, String introduce) {
         this.title = title;
         this.title1 = title1;
         this.title2 = title2;
         this.enable = enable;
+        this.name = name;
+        this.introduce = introduce;
     }
 
     public String getTitle() {
@@ -119,5 +124,21 @@ public class Project {
 
     public void setEnable(boolean enable) {
         this.enable = enable;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
     }
 }
