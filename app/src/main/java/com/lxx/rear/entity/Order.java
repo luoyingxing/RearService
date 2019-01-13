@@ -1,7 +1,6 @@
 package com.lxx.rear.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 /**
  * Order
@@ -16,15 +15,18 @@ public class Order {
     private String number;
     private String time;
 
-    public static List<Order> getOrders() {
-        List<Order> list = new ArrayList<>();
-        list.add(new Order("挂号预约【普通号】", "诊室：诊室1", "已过号", "医生：李桂春", "号数：91", "就诊时间：2019-01-06 14:15 - 15:30"));
-        list.add(new Order("挂号预约【普通号】", "诊室：诊室2", "已过号", "医生：房秀兰", "号数：11", "就诊时间：2018-11-22 08:00 - 10:00"));
-        list.add(new Order("挂号预约【普通号】", "诊室：诊室1", "已过号", "医生：孔润萍", "号数：22", "就诊时间：2018-09-14 15:30 - 16:30"));
-        return list;
+    public static Order cloneOrder() {
+        return new Order("挂号预约【普通号】", "诊室：诊室1", "已过号", "号数：" + new Random().nextInt(100));
     }
 
     public Order() {
+    }
+
+    public Order(String title, String room, String status, String number) {
+        this.title = title;
+        this.room = room;
+        this.status = status;
+        this.number = number;
     }
 
     public Order(String title, String room, String status, String doctor, String number, String time) {
@@ -82,5 +84,17 @@ public class Order {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "title='" + title + '\'' +
+                ", room='" + room + '\'' +
+                ", status='" + status + '\'' +
+                ", doctor='" + doctor + '\'' +
+                ", number='" + number + '\'' +
+                ", time='" + time + '\'' +
+                '}';
     }
 }

@@ -1,7 +1,9 @@
 package com.lxx.rear;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 
@@ -10,7 +12,12 @@ import com.lxx.rear.frame.adapter.CommonAdapter;
 import com.lxx.rear.frame.adapter.ViewHolder;
 import com.lxx.rear.frame.base.BaseActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * OrderListActivity
@@ -45,7 +52,6 @@ public class OrderListActivity extends BaseActivity {
             }
         });
 
-
         ListView listView = findViewById(R.id.lv_order_list);
         adapter = new CommonAdapter<Order>(this, new ArrayList<Order>(), R.layout.item_order_list) {
             @Override
@@ -53,9 +59,9 @@ public class OrderListActivity extends BaseActivity {
                 holder.setText(R.id.tv_item_order_list_title, item.getTitle());
                 holder.setText(R.id.tv_item_order_list_status, item.getStatus());
                 holder.setText(R.id.tv_item_order_list_room, item.getRoom());
-                holder.setText(R.id.tv_item_order_list_doctor, item.getDoctor());
+                holder.setText(R.id.tv_item_order_list_doctor, "医生：" + item.getDoctor());
                 holder.setText(R.id.tv_item_order_list_number, item.getNumber());
-                holder.setText(R.id.tv_item_order_list_time, item.getTime());
+                holder.setText(R.id.tv_item_order_list_time, "就诊时间：" + item.getTime());
 
             }
         };
@@ -71,7 +77,37 @@ public class OrderListActivity extends BaseActivity {
     private void loadData(boolean already) {
         adapter.clear();
         if (!already) {
-            adapter.addAll(Order.getOrders());
+            String json = getOrders();
+            List<Order> list = new ArrayList<>();
+
+            if (TextUtils.isEmpty(json)) {
+                return;
+            }
+
+            try {
+                JSONArray array = new JSONArray("[" + json + "]");
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject object = (JSONObject) array.get(i);
+
+                    Order order = new Order();
+                    order.setTitle(object.getString("title"));
+                    order.setRoom(object.getString("room"));
+                    order.setStatus(object.getString("status"));
+                    order.setDoctor(object.getString("doctor"));
+                    order.setNumber(object.getString("number"));
+                    order.setTime(object.getString("time"));
+
+                    list.add(order);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            adapter.addAll(list);
         }
+    }
+
+    public String getOrders() {
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("order", null);
     }
 }
