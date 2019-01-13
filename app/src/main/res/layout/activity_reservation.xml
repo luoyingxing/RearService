@@ -171,7 +171,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="邱少健"
+            android:text="唐联海"
             android:textColor="@color/gray_66" />
 
     </LinearLayout>
@@ -221,7 +221,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3508********011519"
+            android:text="4509********203655"
             android:textColor="@color/gray_b8" />
 
     </LinearLayout>
@@ -252,7 +252,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="158****0456"
+            android:text="181****7476"
             android:textColor="@color/gray_b8" />
 
     </LinearLayout>
