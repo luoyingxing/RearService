@@ -45,6 +45,8 @@ public class ReservationActivity extends BaseActivity {
                 //String title, String room, String status, String doctor, String number, String time
                 StringBuilder json = new StringBuilder();
                 json.append("{");
+                json.append("\"id\":\"").append(order.getId()).append("\"");
+                json.append(",");
                 json.append("\"title\":\"").append(order.getTitle()).append("\"");
                 json.append(",");
                 json.append("\"room\":\"").append(order.getRoom()).append("\"");

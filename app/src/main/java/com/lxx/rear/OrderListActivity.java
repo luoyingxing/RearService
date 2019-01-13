@@ -1,9 +1,13 @@
 package com.lxx.rear;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 
@@ -18,6 +22,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * OrderListActivity
@@ -66,6 +71,32 @@ public class OrderListActivity extends BaseActivity {
             }
         };
         listView.setAdapter(adapter);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                showDeleteDialog(position);
+                return false;
+            }
+        });
+    }
+
+    private void showDeleteDialog(final int position) {
+        new AlertDialog.Builder(this)
+                .setTitle("提示")
+                .setMessage("确定删除该条记录吗？")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteOrder(position);
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
     }
 
     @Override
@@ -90,6 +121,7 @@ public class OrderListActivity extends BaseActivity {
                     JSONObject object = (JSONObject) array.get(i);
 
                     Order order = new Order();
+                    order.setId(object.getString("id"));
                     order.setTitle(object.getString("title"));
                     order.setRoom(object.getString("room"));
                     order.setStatus(object.getString("status"));
@@ -106,6 +138,41 @@ public class OrderListActivity extends BaseActivity {
             adapter.addAll(list);
         }
     }
+
+    private void deleteOrder(int position) {
+        Order order = adapter.getItem(position);
+
+        String json = getOrders();
+        List<Order> list = new ArrayList<>();
+
+        try {
+            JSONArray array = new JSONArray("[" + json + "]");
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject object = (JSONObject) array.get(i);
+                String id = object.getString("id");
+
+                if (id.equals(order.getId())) {
+                    array.remove(i);
+                    break;
+                }
+            }
+
+            String newJson = array.toString();
+
+            newJson = newJson.substring(1, newJson.length() - 1);
+            saveOrders(newJson);
+
+            loadData(false);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveOrders(String value) {
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putString("order", value).apply();
+    }
+
 
     public String getOrders() {
         return PreferenceManager.getDefaultSharedPreferences(this).getString("order", null);

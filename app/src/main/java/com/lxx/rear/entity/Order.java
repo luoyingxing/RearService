@@ -1,6 +1,7 @@
 package com.lxx.rear.entity;
 
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * Order
@@ -8,6 +9,7 @@ import java.util.Random;
  * Created by luoyingxing on 2019/1/12.
  */
 public class Order {
+    private String id;
     private String title;
     private String room;
     private String status;
@@ -16,13 +18,14 @@ public class Order {
     private String time;
 
     public static Order cloneOrder() {
-        return new Order("挂号预约【普通号】", "诊室：诊室1", "已过号", "号数：" + new Random().nextInt(100));
+        return new Order(UUID.randomUUID().toString(), "挂号预约【普通号】", "诊室：诊室1", "已过号", "号数：" + new Random().nextInt(100));
     }
 
     public Order() {
     }
 
-    public Order(String title, String room, String status, String number) {
+    public Order(String id, String title, String room, String status, String number) {
+        this.id = id;
         this.title = title;
         this.room = room;
         this.status = status;
@@ -36,6 +39,14 @@ public class Order {
         this.doctor = doctor;
         this.number = number;
         this.time = time;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
